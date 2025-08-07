@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+        .innerbox{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+        .gobox{ 
+         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;     }
+
+         .norambut{
+           display: flex;
+           justify-content: center;
+           align-items: center; 
+           box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 4px, rgba(0, 0, 0, 0.3) 0px 4px 13px -4px, rgba(0, 0, 0, 0.2) 0px -4px 0px inset;
+           /* background-color: black; */
+           
+         }
+         .nightimg{
+            display: none;
+         } 
+         .todolist{
+            display: none;
+        }
+    </style>
+</head>
+<body style="background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);" id="mainbody" class="flex justify-center items-center h-[100vh] w-[100vw] p-[0.5rem] " >
+    
+    <div  id="navcontent" class="flex justify-center items-center  object-cover overflow-hidden bg-amber-400 h-[75px] w-[75px]  absolute top-[10%] left-[10%]  rounded-3xl " >
+        <img src="./assets/dayimg-removebg-preview.png "  alt="" class=" object-cover h-full w-full z-2 absolute to-0 left-0" id="lightimg" onclick="nightmode()">
+           <img src="./assets/nlighti-removebg-preview.png" alt="" class="nightimg object-cover h-full w-full z-1 absolute to-0 left-0" id="nightimg" onclick="lightmode()">
+          
+    </div>
+
+    <div id="container" class="container rounded-3xl h-[400px] w-[500px] bg-blue-200 flex flex-col justify-center items-center gap-[0rem]" style=" box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -7px, rgba(0, 0, 0, 0.2) 0px -7px 0px inset;">
+        
+        <div class="viewbox h-[15%] w-[95%] rounded-2xl flex justify-center items-center text-amber-50" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; "> 
+            
+           <textarea style="background-color: transparent;" id="todotplan"  rows="4" cols="30" class=" textar h-[90%] w-[98%]  rounded-2xl  px-[1rem] font-bold border-none outline-none font-sans text-xl " placeholder="Add your Todays task"></textarea>
+        </div>
+
+      <div class=" h-[80%] w-[100%] flex justify-center items-center gap-[1rem]">
+               <div class="innerbox rounded-2xl h-[90%] w-[65%]  px-5 py-5 gap-4 grid grid-cols-3 grid-rows-3">
+
+              <div id="buttons" class="norambut flex flex-col rounded-xl bg-blue-300 row-start-1 row-end-2 col-start-1 col-end-2 cursor-pointer" onclick="normalbuttons(); addText('#Study_'); addElemnt('study');"> <p> (●'◡'●) </p> <p class="text-xs">study</p>  </div> 
+              <div id="buttons"  class="norambut flex flex-col  rounded-xl bg-red-400 row-start-1 row-end-2 col-start-2 col-end-3 cursor-pointer" onclick="normalbuttons(); addText('#Shopping_'); addElemnt('shopping');"> <p>(❁´◡`❁)</p> <p class="text-xs">shopping</p></div>
+              <div id="buttons"  class="norambut  flex flex-col rounded-xl bg-green-500 row-start-1 row-end-2 col-start-3 col-end-4 cursor-pointer" onclick="normalbuttons(); addText('#Work_'); addElemnt('Work');"  <p>>＞︿＜</p> <p class="text-xs">work</p></div>
+              <div id="buttons"  class="norambut  flex flex-col rounded-xl bg-pink-400 row-start-2 row-end-3 col-start-1 col-end-2 cursor-pointer" onclick="normalbuttons(); addText('#Gym_'); addElemnt('Gym'); "> <p>（‵□′）</p> <p class="text-xs">gym</p></div>
+              <div id="buttons"  class="norambut  flex flex-col rounded-xl bg-yellow-300 row-start-2 row-end-3 col-start-2 col-end-3 cursor-pointer" onclick="normalbuttons(); addText('#Study-'); addElemnt('study');"> <p>(。_。)</p> <p class="text-xs">study</p></div>
+              <div id="buttons"  class="norambut  flex flex-col rounded-xl bg-amber-400 row-start-2 row-end-3 col-start-3 col-end-4 cursor-pointer" onclick="normalbuttons(); addText('#Coding_'); addElemnt('Coding');"><p>(. ❛ ᴗ ❛.) </p> <p class="text-xs">coding</p></div>
+              <div id="buttons"  class="norambut  flex flex-col rounded-xl bg-orange-400 row-start-3 row-end-4 col-start-1 col-end-2 cursor-pointer" onclick="normalbuttons(); addText('#SideProject_'); addElemnt('Side Project'); "> <p>(★‿★)</p> <p class="text-xs"> sidep</p></div>
+             <div id="buttons"  class="norambut clearbut flex flex-col rounded-xl bg-violet-400 row-start-3 row-end-4 col-start-2 col-end-4 cursor-pointer" onclick="normalbuttons(); clearbut();"> Refresh :D </div>
+        </div>
+
+         <div class="gobox h-[90%]  w-[25%] rounded-2xl flex justify-center items-center cursor-pointer bg-violet-200" onclick="Pressbutton(); gokey();" id="gobox" >
+               <button  class="text-2xl font-sans">Go</button>
+         </div>
+      </div>
+    </div>
+
+
+
+     <div id="todolist" class="todolist hidden  rounded-3xl  w-[500px] bg-blue-200 flex  justify-center items-center gap-[0rem]" style=" box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -7px, rgba(0, 0, 0, 0.2) 0px -7px 0px inset;">
+
+        <div  class="todlistinner h-[90%] w-[95%] flex justify-center items-center gap-[1rem] rounded-3xl" style="box-shadow: #32325d40 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;">
+             <div id="todlistinner" class="rounded-2xl h-[90%] w-[90%]  px-5 py-5 gap-4 grid grid-cols-1 ">
+
+                   <div class="todohead"><h1 class="font-bold text-black">Todays Tasks</h1></div>
+
+             </div>   
+
+        </div>
+      </div>
+ 
+
+</body>
+   <script>
+         function Pressbutton(){
+            
+                 const box = document.getElementById("gobox");
+                box.style.boxShadow= " rgba(0, 0, 0, 0.06) 2px 2px 4px 0px inset"; 
+
+               setTimeout(() => {
+                   box.style.boxShadow = " rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px";
+                }, 200);     
+         }
+
+         function normalbuttons(){
+            const box = document.getElementsByClassName("norambut");
+            
+            for(let i = 0 ; i< box.length; i++){
+                      buttons[i].addEventListener("click", function () {
+                        normalbuttons(this); // pass the clicked button
+                    });
+            }
+            function normalbuttons(btn){
+                              btn.style.boxShadow = " rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px";
+            setTimeout(() => {
+                btn.style.boxShadow = "rgba(0, 0, 0, 0.4) 0px 3px 4px, rgba(0, 0, 0, 0.3) 0px 4px 13px -4px, rgba(0, 0, 0, 0.2) 0px -4px 0px inset";
+
+                 }, 300 );   
+              }
+             }
+
+            // night function
+
+                function nightmode(){
+                const bg = document.getElementById("mainbody");
+                      bg.style.backgroundImage = " linear-gradient(to top, #30cfd0 0%, #330867 100%) ";
+                const iconbg = document.getElementById("navcontent");
+                      iconbg.style.background = " blue";    
+                const bodybg = document.getElementById("container");
+                      bodybg.style.backgroundImage = "  linear-gradient(to top, #30cfd0 0%, #330867 100%)"; 
+                const gobg = document.getElementById("gobox");
+                      gobg.style.backgroundImage = " linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%) ";             
+                const img1 =document.getElementById("lightimg");
+                      img1.style.display = "none";
+                const img2 = document.getElementById("nightimg");
+                      img2.style.display = "block";  
+              const backdybg = document.getElementById("todolist");
+                      backdybg.style.backgroundImage = "  linear-gradient(to top, #30cfd0 0%, #330867 100%)";       
+                
+           }
+          //light function
+          
+                function lightmode(){
+                const bg = document.getElementById("mainbody");
+                      bg.style.backgroundImage = "linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)";
+                const iconbg = document.getElementById("navcontent");
+                      iconbg.style.background = " #fbbf24 ";    
+                const bodybg = document.getElementById("container");
+                      bodybg.style.background = "  #bfdbfe "; 
+                const gobg = document.getElementById("gobox");
+                      gobg.style.backgroundImage = "none";             
+                const img1 =document.getElementById("lightimg");
+                      img1.style.display = "block";
+                const img2 = document.getElementById("nightimg");
+                      img2.style.display = "none";
+                 const backdybg = document.getElementById("todolist");
+                      backdybg.style.background = "  #bfdbfe";       
+                  
+           }
+
+            // add text function 
+             function addText(text){
+                  const textarea = document.getElementById("todotplan");
+                  textarea.value +=  text;          
+           }
+          // add element function
+           function addElemnt(text){
+               const newdiv = document.createElement("div");
+               newdiv.textContent = text;
+               newdiv.className = "newdic p-2 bg- rounded-2xl flex justify-between  font-bold";
+               newdiv.style = " box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px; ";
+                  document.getElementById("todlistinner").appendChild(newdiv);
+      
+                    const check = document.createElement("input");
+                    check.type = "checkbox";
+                    check.style = ""
+                    check.className = " h-[90%]  w-[10%]"
+                      newdiv.append(check); // add checkbox
+           }
+          // use of go key 
+              function gokey(){
+                const befdiv = document.getElementById("container");
+                    befdiv.style.display = "none";
+                const afterdiv = document.getElementById("todolist");
+                    afterdiv.style.display = "flex"; 
+              }
+              // clear function
+              function clearbut(){
+            //     document.getElementsByClassName("textar").reset();
+            location.reload();
+
+              }
+
+    </script>
+</html>
